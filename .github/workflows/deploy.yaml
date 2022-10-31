@@ -28,3 +28,19 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - id: auth
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCP_PRIVATE_KEY }}
+
+      - id: set-up-cloud-sdk
+        uses: google-github-actions/setup-gcloud@v0
+
+      - id: configure-docker
+        shell: bash
+        run: |
+          gcloud auth configure-docker
+
+      - name: check command
+        run: gcloud config list
+
