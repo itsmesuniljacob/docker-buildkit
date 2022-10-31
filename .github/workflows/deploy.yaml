@@ -53,8 +53,8 @@ jobs:
           context: .
           push: true
           tags: us.gcr.io/kubernetes-istio-gcp/test-services:1.0
-          cache-from: type=registry,ref=us.gcr.io/kubernetes-istio-gcp/test-services:buildcache
-          cache-to: type=registry,ref=us.gcr.io/kubernetes-istio-gcp/test-services:buildcache,mode=max
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       # - name: docker-build
       #   shell: bash
