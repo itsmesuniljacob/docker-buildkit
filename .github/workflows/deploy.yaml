@@ -3,7 +3,7 @@ name: Test - Build
 on:
   push:
     branches:
-      - "master"
+      - "main"
 
 env:
   GKE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
