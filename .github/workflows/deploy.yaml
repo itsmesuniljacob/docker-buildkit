@@ -1,0 +1,30 @@
+name: Test - Build
+
+on:
+  push:
+    branches:
+      - "master"
+
+env:
+  GKE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+  GKE_ZONE: asia-south1
+  IMAGE: test-services
+  REGISTRY_HOSTNAME: us.gcr.io
+  APP_NAME: test-services
+
+jobs:
+  node-build-deploy:
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
