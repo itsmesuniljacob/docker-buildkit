@@ -47,4 +47,9 @@ jobs:
         run: |
           docker build -t "$REGISTRY_HOSTNAME/$GKE_PROJECT/test-services:$GITHUB_SHA" .
 
+      - id: publish-to-registry
+        shell: bash
+        run: |
+          docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/test-services:$GITHUB_SHA
+
 
