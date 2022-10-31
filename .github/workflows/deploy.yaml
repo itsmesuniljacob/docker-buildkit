@@ -9,6 +9,7 @@ env:
   GKE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
   GKE_ZONE: asia-south1
   IMAGE: test-services
+  GITHUB_SHA: ${{ github.sha }}
   REGISTRY_HOSTNAME: us.gcr.io
   APP_NAME: test-services
 
@@ -41,6 +42,9 @@ jobs:
         run: |
           gcloud auth configure-docker
 
-      - name: check command
-        run: gcloud config list
+      - id: docker-build
+        shell: bash
+        run: |
+          docker build -t "$REGISTRY_HOSTNAME/$GKE_PROJECT/test-services:$GITHUB_SHA" .
+
 
