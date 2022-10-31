@@ -52,9 +52,9 @@ jobs:
         with:
           context: .
           push: true
-          tags: $REGISTRY_HOSTNAME/$GKE_PROJECT/test-services:$GITHUB_SHA
-          cache-from: type=registry,ref=$REGISTRY_HOSTNAME/$GKE_PROJECT/test-services:buildcache
-          cache-to: type=registry,ref=$REGISTRY_HOSTNAME/$GKE_PROJECT/test-services:buildcache,mode=max
+          tags: us.gcr.io/kubernetes-istio-gcp/test-services:$GITHUB_SHA
+          cache-from: type=registry,ref=us.gcr.io/kubernetes-istio-gcp/test-services:buildcache
+          cache-to: type=registry,ref=us.gcr.io/kubernetes-istio-gcp/test-services:buildcache,mode=max
 
       # - name: docker-build
       #   shell: bash
