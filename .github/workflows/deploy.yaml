@@ -52,7 +52,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: us.gcr.io/kubernetes-istio-gcp/test-services:$GITHUB_SHA
+          tags: us.gcr.io/kubernetes-istio-gcp/test-services:1.0
           cache-from: type=registry,ref=us.gcr.io/kubernetes-istio-gcp/test-services:buildcache
           cache-to: type=registry,ref=us.gcr.io/kubernetes-istio-gcp/test-services:buildcache,mode=max
 
